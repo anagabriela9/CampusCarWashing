@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Washing</title>
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+  <!-- boostrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <!-- bootstrap-icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"> 
+
+  <style>
+
+    body{
+    background-color: #C4DFDF;
+    background-size: cover;
+    background-attachment: fixed;
+    }
+  
+  </style>
+</head>
+<body>
+  <!-- navbar -->
+  <nav data-bs-theme="dark" class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a href="#header-clientes" class="nav-link active" aria-current="page">Clientes</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="#header-servicios">Servicios CW</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="#header-compra-cw">Compra de Servicios</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="#header-fidelizacion">Fidelización</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+  </nav>
+
+  <h1>Campus Car Washing Center</h1>
+
+  <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="./img/carrusel1.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="./img/carrusel2.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="./img/carrusel3.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div><br>
+
+  <div class="container-sm">
+    <!-- Módulo de gestión de clientes -->
+    <div>
+      <header id="header-clientes" class="text-center">
+        <h1>Clientes</h1>
+      </header>
+      <form id="customerForm">
+        <div class="form-row ">
+          <div class="form-group">
+            <label for="identification">Identificación:</label>
+            <input type="text" class="form-control" id="identification" required>
+          </div>
+          <div class="form-group">
+            <label for="firstName">Nombres:</label>
+            <input type="text" class="form-control" id="firstName" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Apellidos:</label>
+            <input type="text" class="form-control" id="lastName" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Teléfono:</label>
+            <input type="tel" class="form-control" id="phone" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Correo electrónico:</label>
+            <input type="email" class="form-control" id="email" required>
+          </div>
+          <div class="form-group">
+            <label for="placa">Placa vehículo:</label>
+            <input type="text" class="form-control" id="placa" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="tipo">Tipo de vehículo:</label>
+          <input type="text" class="form-control" id="tipo" placeholder="Automóvil, Camioneta, Autobús, Camión de Carga" required>
+        </div><br>
+        <button type="submit" class="btn btn-primary">Registrar Cliente</button>
+      </form>
+    </div><br>
+
+    <!-- Tabla de clientes -->
+    <div>
+      <h2>Lista de Clientes</h2>
+      <div class="form-group">
+        <input type="text" class="form-control" id="searchCustomer" placeholder="Buscar cliente" oninput="searchCustomers()">
+      </div>
+      <table class="table table-primary table-striped">
+        <thead>
+          <tr>
+            <th>Identificación</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            <th>Teléfono</th>
+            <th>Correo electrónico</th>
+            <th>Placa vehículo</th>
+            <th>Tipo de vehículo</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody id="customerTableBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Módulo de gestión de servicios -->
+    <section class="container-sm">
+      <header id="header-servicios" class="text-center">
+          <h1>Gestión de Servicios Car Washing</h1>
+      </header>
+
+
+      <div class="container text-center">
+          <div class="row ">
+              <!-- formulario gestion video juegos -->
+              <div class="col-sm-12 col-md-4">
+                  <form id="form-gestion-vj">
+
+                      <div class="mb-3">
+                          <label for="nombre-vj" class="form-label">Nombre del servicio</label>
+                          <input type="text" name="nit" class="form-control" id="nombre-vj" name="nit">
+                      </div>
+                      <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <input type="text" class="form-control" id="descripcion" name="apellidos">
+                    </div>
+                      <div class="mb-3">
+                          <label for="valor-licencia-vj" class="form-label">Valor del servicio</label>
+                          <input type="number" class="form-control" id="valor-licencia-vj" name="apellidos">
+                      </div>
+                      <div class="mb-3">
+                          <label for="puntos-vj" class="form-label">Puntos</label>
+                          <input type="number" class="form-control" id="puntos-vj" name="telefono">
+                      </div>
+
+                      <!-- botones -->
+                      <button type="submit" class="btn btn-primary">Agregar</button>
+
+                  </form>
+              </div>
+
+              <!-- table gestión servicios-->
+              <div id="table-gestion-vj" class="col-sm-12 col-md-8 table-responsive">
+
+                  <table class="table table-hover table-primary table-striped margin:2px">
+                      <thead>
+                          <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Nombre Servicio</th>
+                              <th scope="col">Descripción</th>
+                              <th scope="col">Valor servicio</th>
+                              <th scope="col">Puntos</th>
+                          </tr>
+                      </thead>
+                      <tbody id="tbody-gestion-vj">
+                          <!-- agregados dinamicamente -->
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div><br>
+    </section>
+    <div class="card-group">
+      <div class="card">
+        <img src="./img/estacion-lavado-autos.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Lavado de Chasis</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="./img/fondo.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Grafitado (con pistola)</h5>
+          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+      <div class="card">
+        <img src="./img/card3.jpg" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Polichado (con brilladora)</h5>
+          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+        </div>
+      </div>
+    </div><br>
+
+    <!-- Módulo de compra de servicios -->
+    <section class="container">
+      <header id="header-compra-cw" class="text-center">
+          <h1>¿Qué servicio deseas?</h1>
+      </header>
+
+      <div class="container text-center">
+          <div class="row">
+              <div class="col">
+
+                  <form id="form-compra-vj">
+                      <div>
+                          <select class="form-select" id="nombreCliente">
+                              <option value="">Clientes</option>
+                          </select>
+                      </div>
+                      <div>
+                          <select class="form-select" id="nombreJuego">
+                              <option value="">Servicios</option>
+                          </select>
+                      </div><br>
+                      <div class="mb-3">
+                          <label for="valorVj" class="form-label">Valor Servicio</label>
+                          <input type="text" class="form-control" id="valorVj" name="valor">
+                      </div>
+
+                      <button type="submit" class="btn btn-success">Comprar</button>
+
+                  </form>
+
+
+
+              </div>
+          </div><br>
+
+          <div class="row">
+              <h2>Historial de compras</h2>
+              <div id="cardsContainer" class="col container-cards">
+                  <!-- agregados dinamicamente -->
+              </div>
+          </div>
+      </div>
+
+
+  </section>
+
+    <!-- Información de puntos de fidelización -->
+    <section class="container">
+      <header id="header-fidelizacion" class="text-center">
+          <h1>Fidelización</h1>
+      </header>
+
+      <div class="container text-center">
+          <div class="row">
+              <div class="col table-responsive">
+                  <!-- table gestión video juegos-->
+                  <div id="table-fidelizacion" class="table-responsive">
+
+                      <table class="table table-hover table-primary table-striped margin:2px">
+                          <thead>
+                              <tr>
+                                  <th scope="col">#</th>
+                                  <th scope="col">Nombres</th>
+                                  <th scope="col">Apellidos</th>
+                                  <th scope="col">Puntos</th>
+                              </tr>
+                          </thead>
+                          <tbody id="tbody-fidelizacion">
+                              <!-- agregados dinamicamente -->
+                          </tbody>
+                      </table>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+
+  </section>
+
+    <br>
+  <footer class="bg-light text-center text-lg-start">
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: #73A9AD;">
+        © 2023 Copyright:
+        <a class="text-dark" href="https://campuslands.com/">CampusLand</a>
+      </div>
+      <!-- Copyright -->
+  </footer>
+
+  <!-- boton para deslizar hacia arriba -->
+<div class="go-top-container">
+  <div class="go-top-button">
+      <i class="fas fa-chevron-up"></i>
+  </div>
+</div>
+    <!-- bootstrap -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"   integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+  <script src="app.js"></script>
+</body>
+</html>
